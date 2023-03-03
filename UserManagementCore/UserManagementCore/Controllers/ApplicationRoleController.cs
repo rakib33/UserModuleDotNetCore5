@@ -13,6 +13,7 @@ using UserManagementCore.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using UserManagementCore.Filters;
+using UserManagementCore.BAL.Interfaces;
 
 namespace UserManagementCore.Controllers
 {
@@ -20,9 +21,10 @@ namespace UserManagementCore.Controllers
     [ApiController]
     public class ApplicationRoleController : ControllerBase
     {
-        private readonly ApplicationRoleService _ApplicationRoleService;
+        //private readonly ApplicationRoleService _ApplicationRoleService;
+        private readonly IApplicationRoleService _ApplicationRoleService;
         private readonly ILogger<ApplicationRoleController> _logger;
-        public ApplicationRoleController(ApplicationRoleService ApplicationRoleService, ILogger<ApplicationRoleController> logger)
+        public ApplicationRoleController(IApplicationRoleService ApplicationRoleService, ILogger<ApplicationRoleController> logger)
         {
             _ApplicationRoleService = ApplicationRoleService;
             _logger = logger;
@@ -42,7 +44,7 @@ namespace UserManagementCore.Controllers
         {
             //try
             //{
-                throw new ApplicationException();
+          //  throw new ApplicationException();
                 _logger.LogInformation("[ApplicationRole]-> Get event fire.");
                 return Ok(new { title = AppVariable.SuccessStatus, data = await _ApplicationRoleService.GetRoleList() });
 

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Reflection;
 using UserManagementCore.AutoMapper;
+using UserManagementCore.BAL.Interfaces;
 using UserManagementCore.BAL.Services;
 using UserManagementCore.DAL.Interface;
 using UserManagementCore.DAL.Repository;
@@ -67,11 +68,25 @@ namespace UserManagementCore
             /* [Caching]*/
             services.AddResponseCaching();
 
+            /*
+             Transient objects are always different; a new instance is provided to every controller and every service.
+             Scoped objects are the same within a request, but different across different requests.
+             Singleton objects are the same for every object and every request.
+              Controller:
+                Transient : Obj1 is generated
+                Scoped : Obj1 is generated
+                Singleton: Obj1 is generated
+              Services:
+                Transient : Obj2 is generated
+                Scoped : Obj1 is generated
+                Singleton: Obj1 is generated
+            So for same http request Transient will create new object both controller ,services and others but scoped remain same, singleton are same untill project alive.
+             */
             //services.AddTransient<IRepository<ApplicationRoleDetails>, RepositoryRoleDetails>();
             services.AddScoped<IRepository<ApplicationRoleDetails>, RepositoryRoleDetails>();
             services.AddScoped<ApplicationRoleDetailsService, ApplicationRoleDetailsService>();
             services.AddScoped<UserManagementService, UserManagementService>();
-            services.AddScoped<ApplicationRoleService, ApplicationRoleService>();
+            services.AddScoped<IApplicationRoleService, ApplicationRoleService>();
             services.AddTransient<MyActionFilters>();
             //services.AddSingleton<IRepository,InmemoryRepository>();
             services.AddControllers();
