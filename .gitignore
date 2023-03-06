@@ -8,3 +8,5 @@ UserManagementCore/UserManagementEntityModel/bin/
 UserManagementCore/.vs/
 UserManagementCore/bin/
 UserManagementCore/obj/
+.vs/UserManagementCore/DesignTimeBuild/.dtbcache.v2
+.vs/UserManagementCore/v16/.suo
