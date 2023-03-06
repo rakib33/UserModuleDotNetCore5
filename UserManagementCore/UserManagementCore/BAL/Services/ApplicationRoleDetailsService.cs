@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UserManagementCore.BAL.Interfaces;
 using UserManagementCore.DAL.Interface;
 using UserManagementCore.Models;
 
 namespace UserManagementCore.BAL.Services
 {
-    public class ApplicationRoleDetailsService
+    public class ApplicationRoleDetailsService : IApplicationRoleDetailsService
     {
         private readonly IRepository<ApplicationRoleDetails> _applicationRoleDetails;
 

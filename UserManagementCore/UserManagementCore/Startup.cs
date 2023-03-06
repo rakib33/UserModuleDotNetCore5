@@ -84,7 +84,7 @@ namespace UserManagementCore
              */
             //services.AddTransient<IRepository<ApplicationRoleDetails>, RepositoryRoleDetails>();
             services.AddScoped<IRepository<ApplicationRoleDetails>, RepositoryRoleDetails>();
-            services.AddScoped<ApplicationRoleDetailsService, ApplicationRoleDetailsService>();
+            services.AddScoped<IApplicationRoleDetailsService, ApplicationRoleDetailsService>();
             services.AddScoped<UserManagementService, UserManagementService>();
             services.AddScoped<IApplicationRoleService, ApplicationRoleService>();
             services.AddTransient<MyActionFilters>();

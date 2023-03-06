@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UserManagementCore.BAL.Interfaces;
 using UserManagementCore.BAL.Services;
 using UserManagementCore.DAL.Interface;
 using UserManagementCore.Models;
@@ -16,14 +17,14 @@ namespace UserManagementCore.Controllers
     [ApiController]
     public class ApplicationRoleDetailsController : ControllerBase
     {
-        private readonly ApplicationRoleDetailsService _ApplicationRoleDetailsService;
+        private readonly IApplicationRoleDetailsService _ApplicationRoleDetailsService;
         private readonly UserManagementService _UserManagementService;
 
        // private readonly IRepository<ApplicationRoleDetails> _ApplicationRoleDetails;
         private readonly ILogger<ApplicationRoleDetailsController> _logger;
 
         public ApplicationRoleDetailsController( ILogger<ApplicationRoleDetailsController> logger,
-            ApplicationRoleDetailsService ApplicationRoleDetailsService, UserManagementService UserManagementService)
+            IApplicationRoleDetailsService ApplicationRoleDetailsService, UserManagementService UserManagementService)
         {
             _ApplicationRoleDetailsService = ApplicationRoleDetailsService;
           //  _ApplicationRoleDetails = ApplicationRoleDetails;
