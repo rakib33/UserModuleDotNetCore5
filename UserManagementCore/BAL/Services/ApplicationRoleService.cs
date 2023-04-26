@@ -4,11 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UserManagementCore.BAL.Interfaces;
 using UserManagementCore.Models;
 
 namespace UserManagementCore.BAL.Services
 {
-    public class ApplicationRoleService
+    public class ApplicationRoleService : IApplicationRoleService
     {
         private readonly RoleManager<ApplicationRole> _roleManager;
         public ApplicationRoleService(RoleManager<ApplicationRole> roleManager)
